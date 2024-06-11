@@ -1,0 +1,41 @@
+{
+  "name": "bdd-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run",
+    "test:dryRun": "npx cypress-cucumber-diagnostics",
+    "test:smoke": "npx cypress run --env tags=@Smoke",
+    "test:regression": "npx cypress run --env tags=@Regression",
+    "test:smoke:prettier": "npx cypress run --env tags=@Smoke ; node reports.js",
+    "test:regression:prettier": "npx cypress run --env tags=@Regression ; node reports.js"
+    
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.6",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.1",
+    "cypress": "^13.11.0",
+    "dotenv": "^16.4.5",
+    "multiple-cucumber-html-reporter": "^3.6.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/e2e/step_definitions/**/*.js",
+    "html": {
+      "enabled": true,
+      "output": "cypress/reports/cucumber-html/cucumber-report.html"
+    },
+    "messages": {
+      "enabled": true,
+      "output": "cypress/reports/cucumber-ndjson/cucumber-report.ndjson"
+    },
+    "json": {
+      "enabled": true,
+      "output": "cypress/reports/cucumber-json/cucumber-report.json"
+    }
+  }
+}

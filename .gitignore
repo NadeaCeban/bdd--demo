@@ -1,0 +1,6 @@
+.env
+.DS_Store
+reports
+downloads
+screenshot
+node_modules
